@@ -10,18 +10,25 @@ public class Main {
 
     public static void main(String[] args) {
         //Задание 1
+        System.out.println("Считаем, сколько раз встречается каждое слово:");
         countArray();
 
         //Задание 2
+        System.out.println("Телефонная книга. Добавляем и ищем по фамилии:");
         Phonebook phonebook = new Phonebook();
-        phonebook.getInfo("Svetlov");
-        phonebook.putInfo("Chernichev", "+7911111111");
+
+        phonebook.putInfo("Popov", "+79999999991");
+        phonebook.putInfo("Svetlov", "+79999999992");
+        phonebook.putInfo("Kononenko", "+79999999993");
+        phonebook.putInfo("Popov", "+7911111111111");
+        phonebook.putInfo("Chernichev", "+791111222222");
+        phonebook.putInfo("Popov", "+7922222222");
+
+        phonebook.getInfo("Popov");
         phonebook.getInfo("Chernichev");
-
-
     }
     private static void countArray() {
-        ArrayList<String> array = new ArrayList<String>();
+        ArrayList<String> array = new ArrayList<>();
         array.add("tea");
         array.add("king");
         array.add("map");
