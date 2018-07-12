@@ -2,6 +2,7 @@ package ru.vyacheslav.javacore.lesson3;
 
 // @author Vyacheslav Suslov
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -9,24 +10,25 @@ import java.util.Set;
 class Phonebook {
     private HashMap<String, String> phonebook = new HashMap<>();
 
-    void getInfo(String name) {
-//        HashMap<String, String> phonebook = new HashMap<>();
-        phonebook.put("Popov", "+79999999991");
-        phonebook.put("Svetlov", "+79999999992");
-        phonebook.put("Kononenko", "+79999999993");
-        phonebook.get(name);
+    private ArrayList<String> getPhone(String name) {
+        ArrayList<String> phones = new ArrayList<>();
 
-        Set<Map.Entry<String, String>> set = phonebook.entrySet();
-        for (Map.Entry<String, String> o : set) {
-            if (o.getKey() == name) {
-                System.out.println("Номер " + o.getKey() + ": " + o.getValue());
-            }
+        Set<Map.Entry<String, String>> phonebookMap = phonebook.entrySet();
+        for (Map.Entry<String, String> entry : phonebookMap) {
+            if (entry.getValue() == name)
+                phones.add(entry.getKey());
+        }
+        return phones;
+    }
+
+    void getInfo(String name) {
+        ArrayList<String> phones = getPhone(name);
+        for (String phone : phones) {
+            System.out.println("Номер " + name + ": " + phone);
         }
     }
+
     void putInfo(String name, String phone) {
-        phonebook.put(name, phone);
+        phonebook.put(phone, name);
     }
-
-    }
-
-
+}
